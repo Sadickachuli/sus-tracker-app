@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+{% block title %}
+<title>Dashboard</title>
+{% endblock title %}
+{% block mainheader %}
+<!-- DASHBOARD SECTION -->
+<section class="dashboard">
+  <!-- dashboard header -->
+  <div class="dash-header">
+    <div class="title-search">
+      <div class="dash-title">
+        <h2>My Dashboard</h2>
+      </div>
+      <div class="search-bar">
+        <h3>search</h3>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+
+    <div class="profile-pic">
+      <i class="fa-solid fa-bell"></i>
+      <img src="{{ image_file }}" alt="profile picture" />
+      <h4>Hello {{ current_user.username }}</h4>
+    </div>
+  </div>
+
+  <!-- dashboard body -->
+  <div class="dash-body">
+    <!-- dashboard top row -->
+    <div class="dash-top">
+      <!-- tasks progress -->
+      <div class="dash-tasks">
+        <h2>Tasks</h2>
+        <div class="progress">
+          {% if my_tasks %}
+          {% for task in my_tasks %}
+          <div class="further-progress">
+            <h3>{{ task.title }}</h3>
+            <div class="shell">
+              <div class="task-{{ task.priority }}"></div>
+            </div>
+            <p>50%</p>
+          </div>
+          {% endfor %}
+          {% else %}
+          <h4 class="no">No tasks created</h4>
+          {% endif %}
+        </div>
+      </div>
+      <!-- team projects progress -->
+      <div class="dash-collaborations">
+        <h2>Projects</h2>
+        <div class="progress">
+          {% if projects %}
+          {% else %}
+          <h4 class="no">No Projects Created!</h4>
+          {% endif %}
+        </div>
+      </div>
+      <!-- deadlines -->
+      <div class="dash-deadlines">
+        <h2>Deadlines</h2>
+        <div class="progress-2">
+          {% for task in my_tasks %}
+          <h3>{{ task.id }}. {{ task.date_due }}</h3>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <!-- dashboard bottom row -->
+    <div class="dash-bottom">
+      <!-- current task -->
+      <div class="current-task">
+        <h2>Current Task</h2>
+        <div class="current-progress">
+          <!-- tasks columns -->
+          {% if my_tasks %}
+        <div class="each-task">
+          <!-- title & update button -->
+          <div class="title-update-2">
+            <div class="task-2-{{ my_tasks[-1].priority }}">
+              <h3>{{ my_tasks[-1].title }}</h3>
+            </div>
+            <a href="{{ url_for('tasks') }}" class="updateBtn">
+              <button onclick="updateForm()">See More</button>
+            </a>
+          </div>
+          <!-- progress bar -->
+          <div class="progress-bar">
+          </div>
+          <!-- desc, due & completed -->
+          <div class="desc-due-comp">
+            <div class="table-head">
+              <h2>Todo</h2>
+              <h2>Due</h2>
+            </div>
+            <div class="smallest-1">
+              <p class="todd">{{ my_tasks[-1].todo }}</p>
+              <h4 class="dodd">{{ my_tasks[-1].date_due }}</h4>
+            </div>
+          </div>
+        </div>
+        {% else %}
+        <h4 class="no">No Current task</h4>
+        {% endif %}
+        </div>
+      </div>
+      <!-- current project -->
+      <div class="current-project">
+        <h2>Current Project</h2>
+        <div class="current-progress">
+          <div class="curr-proj">
+            <h2 class="no">No Projects Created!</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock mainheader %}

@@ -1,0 +1,221 @@
+{% extends "layout.html" %} {% block title %}
+<title>Tasks</title>
+{% endblock title %} {% block mainheader %}
+<!-- TASKS SECTION -->
+<section class="tasks">
+  <!-- tasks header -->
+  <div class="tasks-header">
+    <div class="title-search">
+      <div class="tasks-title">
+        <h2>My Tasks</h2>
+        <p>Create and manage your tasks</p>
+      </div>
+      <div class="search-bar">
+        <h3>Find a Task</h3>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </div>
+    </div>
+
+    <div class="profile-pic">
+      <i class="fa-solid fa-bell"></i>
+      <img src="{{ image_file }}" alt="profile picture" />
+      <h4>Hello {{ current_user.username }}</h4>
+    </div>
+  </div>
+  <!-- TASKS BODY -->
+  <div class="tasks-body">
+    <!-- Top row -->
+    <div class="tasks-top">
+      <!-- pending -->
+      <div class="pending">
+        <h2>Pending</h2>
+        <div class="pendragon"></div>
+      </div>
+      <!-- calendar -->
+      <div class="calendar-1">
+        <header>
+        <p class="current-date"></p>
+        <div class="icons">
+          <span id="prev" class="material-symbols-rounded">chevron_left</span>
+          <span id="next" class="material-symbols-rounded">chevron_right</span>
+        </div>
+      </header>
+      <div class="calendar">
+        <ul class="weeks">
+          <li>Sun</li>
+          <li>Mon</li>
+          <li>Tue</li>
+          <li>Wed</li>
+          <li>Thu</li>
+          <li>Fri</li>
+          <li>Sat</li>
+        </ul>
+        <ul class="days"></ul>
+      </div>
+      </div>
+      <!-- priority & overdue -->
+      <div class="priority-overdue">
+        <div class="overdue">
+          <h2>Overdue</h2>
+          <div class="late">
+            <p>You're early!</p>
+          </div>
+        </div>
+        <div class="priority">
+          <h2>Priority</h2>
+          <div class="color-code">
+            <!-- high color code -->
+            <div class="code">
+              <h5>High</h5>
+              <div class="purple1"></div>
+            </div>
+            <!-- medium color code -->
+            <div class="code">
+              <h5>Mid</h5>
+              <div class="purple2"></div>
+            </div>
+            <!-- low color code -->
+            <div class="code">
+              <h5>Low</h5>
+              <div class="purple3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Bottom row -->
+    <div class="tasks-bottom">
+      <!-- Create task button -->
+      <div class="create-task">
+        <button onclick="openForm()">Create a Task +</button>
+      </div>
+      <!-- tasks list -->
+      <div class="tasks-list">
+        <!-- tasks columns -->
+        {% for task in my_tasks %}
+          <!-- Modal -->
+          <div class="overlay-1" id="deleteModalOverlay">
+            <div class="modal">
+              <p>Are you sure you want to delete this task?</p>
+              <div class="close-del">
+                <button class="clos-btn" onclick="closeModal()">Cancel</button>
+                <form action="{{ url_for('delete_task', task_id=task.id) }}" method="POST">
+                  <input type="submit" value="Delete" class="del-btn">
+                </form>
+              </div>
+            </div>
+          </div>
+        <div class="one-task">
+          <!-- title & update button -->
+          <div class="title-update">
+            <div class="task-title-{{ task.priority }}">{{ task.title }}</div>
+            <a href="{{ url_for('update_task', task_id=task.id) }}">
+              <button>UPDATE</button>
+            </a>
+            <button class="delete" type="button" onclick="openModal()">DELETE</button>
+          </div>
+          <!-- progress bar -->
+          <div class="progress-bar">
+            <!-- <h5>Progress {{ task.progress }}</h5> -->
+          </div>
+          <!-- desc, due & completed -->
+          <div class="desc-due-comp">
+            <div class="table-head">
+              <h2>Todo</h2>
+              <h2>Due</h2>
+            </div>
+            <div class="smallest">
+              <div class="todd"><p>{{ task.todo }}</p></div>
+              <div class="dodd"><h4>{{ task.date_due }}</h4></div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <!-- Trigger button for the pop-up -->
+  <!-- <button onclick="openForm()">Open Form</button> -->
+  <!-- The pop-up form container -->
+  <div class="overlay" id="overlay">
+    <div class="form-container">
+      <span class="close-btn" onclick="closeForm()">&times;</span>
+      <form method="POST" action="" class="create-form">
+        {{ form.hidden_tag() }}
+        <fieldset>
+          <legend>CREATE TASK</legend>
+          <div class="bigger">{{ form.title(class="new-1") }}</div>
+          <div class="bigger">
+            {{ form.priority(class="new-2", id="prior") }}
+          </div>
+          <div class="bigger-1">
+            {{ form.content(class="new") }} {{ form.date_due(class="new-3") }}
+            {% if form.date_due.errors %} {% for error in form.date_due.errors
+            %} <span class="danger"> {{ error }} </span><br />
+            {% endfor %} {% endif %}
+          </div>
+        </fieldset>
+        <div class="add-button">{{ form.submit(class="add") }}</div>
+      </form>
+    </div>
+  </div>
+  <script>
+    // Function to open the pop-up form
+    function openForm() {
+      document.getElementById("overlay").style.display = "flex";
+    }
+
+    // Function to close the pop-up form
+    function closeForm() {
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    // Event listener to trigger the pop-up form
+    document.getElementById("openFormBtn").addEventListener("click", openForm);
+  </script>
+
+
+
+<!-- JavaScript to toggle modal display -->
+<script>
+  function openModal() {
+    document.getElementById('deleteModalOverlay').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('deleteModalOverlay').style.display = 'none';
+  }
+
+  function deleteItem() {
+    // Add your logic to delete the item
+    // For example, you can make an AJAX request to the server
+    console.log("Item deleted!");
+    // Close the modal
+    closeModal();
+  }
+</script>
+
+    <!-- Flash Messages -->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div id="flash-messages">
+                {% for message in messages %}
+                    <div class="flash-message success">{{ message }}</div>
+                {% endfor %}
+            </div>
+            <script>
+                // JavaScript to fade out the flash messages after 3 seconds
+                document.addEventListener("DOMContentLoaded", function() {
+                    var flashMessages = document.querySelectorAll('.flash-message');
+                    flashMessages.forEach(function(message) {
+                        setTimeout(function() {
+                            message.classList.add('fade-out');
+                        }, 3000);
+                    });
+                });
+            </script>
+        {% endif %}
+    {% endwith %}
+
+</section>
+{% endblock mainheader %}

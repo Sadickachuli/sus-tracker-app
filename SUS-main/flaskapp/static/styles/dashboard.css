@@ -1,0 +1,376 @@
+* {
+  /* margin: 0;
+  padding: 0;
+  box-sizing: border-box; */
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  color: #ececec;
+  background: #1f1f1f;
+}
+
+main {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+/* DASHBOARD CONTENT */
+.dashboard {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dashboard header */
+.dash-header {
+  width: 95%;
+  height: 12%;
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-self: center;
+}
+
+.title-search {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 55%;
+  margin: 0;
+  padding-left: 35px;
+}
+
+.dash-title {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  padding-left: 0;
+}
+
+.dash-title h2 {
+  font-size: 35px;
+  margin: 0;
+}
+
+.dash-title p {
+  margin: 0;
+}
+
+.notifications {
+  margin: 0;
+  width: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.notifications i {
+  font-size: 20px;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* SEARCH BAR */
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  width: 42%;
+  align-items: center;
+  justify-content: space-around;
+  height: 45%;
+  border: 2px solid #2ECC71;
+  border-radius: 20px;
+}
+
+/* DASHBOARD BODY */
+.dash-body {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 85%;
+  border-radius: 20px;
+  justify-self: center;
+  align-self: center;
+  background: linear-gradient(to right, #2ECC71, #1f1f1f);
+  padding-top: 10px;
+  justify-content: space-evenly;
+}
+
+/* top row */
+.dash-top {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 40%;
+  padding: 0;
+}
+
+.dash-tasks,
+.dash-collaborations,
+.dash-deadlines {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 32%;
+  height: 100%;
+  /* background: green; */
+}
+
+.dash-body h2 {
+  font-size: 17px;
+  color: #595959;
+  margin: 0;
+  align-self: flex-start;
+  margin-left: 23px;
+}
+
+.progress {
+  width: 95%;
+  height: 90%;
+  background: #815fd657;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: auto;
+  padding-top: 8px;
+}
+
+.further-progress {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  height: 30%;
+  align-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 10px;
+}
+
+.further-progress h3 {
+  font-size: 15px;
+  font-weight: 500;
+  width: 30%;
+}
+
+.further-progress p {
+  font-size: 12px;
+}
+
+.no , .progress h2{
+  font-size: 20px;
+  color: #acabab;
+  align-self: center;
+  justify-self: center;
+}
+
+/* DASHBOARD BODY BOTTOM ROW */
+.dash-bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 55%;
+  padding: 0;
+  align-self: center;
+}
+
+.current-task, .current-project {
+  width: 48%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.current-progress {
+  width: 98%;
+  height: 90%;
+  border-radius: 20px;
+  background: #815fd657;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* INDIVIDUAL TASKS */
+.task-mid {
+  background: #8C52FE;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.task-high {
+  background: #FF5555;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.task-low {
+  background: #50ACFE;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  height: 100%;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.shell{
+  background: #595959;
+  width: 37%;
+  height: 20%;
+  border-radius: 20px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.progress-2 {
+  width: 100%;
+  height: 90%;
+  background: #815fd657;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+}
+
+.dash-deadlines h3 {
+  background: #333;
+  width: 50%;
+  height: 12%;
+  font-size: 20px;
+  color: #ececec;
+  text-align: center;
+  font-weight: 400;
+  border-radius: 20px;
+}
+
+.curr-proj h2{
+  font-size: 20px;
+  color: #acabab;
+}
+
+.each-task {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  height: 95%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.title-update-2 {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  height: 20%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.task-2-high {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 50%;
+  background: #FF5555;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 20px;
+
+}
+
+.task-2-low {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 60%;
+  background: #50ACFE;
+  border-radius: 20px;
+}
+
+.task-2-mid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 40%;
+  height: 60%;
+  background: #8C52FE;
+  border-radius: 20px;
+}
+
+/* UPDATE BUTTON */
+.updateBtn {
+  width: 30%;
+  height: 60%;
+  border: 1px solid #333;
+  border-radius: 20px;
+}
+
+.updateBtn button {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #3e2d4e;
+  border-radius: 20px;
+  color: #ececec;
+  cursor: pointer;
+}
+
+
+.smallest-1 {
+  margin-top: 8px;
+  width: 90%;
+  height: 20%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dash-body button:hover {
+  box-shadow: 0 0 5px #b9a1f5c4;
+}
