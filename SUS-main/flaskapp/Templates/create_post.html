@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="log-content">
+    <form method="POST" action="">
+  {{ form.hidden_tag() }}
+  <fieldset>
+    <legend>New Post</legend>
+    <div> {{ form.title(class="fill") }}</div>
+    <div>{{ form.content(class="fill") }}</div>
+  </fieldset>
+  <div class="login-button">
+    {{ form.submit(class="submit") }}
+  </div>
+    </form>
+</div>
+{% endblock content %}

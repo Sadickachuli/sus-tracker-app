@@ -1,6 +1,6 @@
 from flask import redirect, url_for, render_template, flash, request, abort
 from flaskapp import app, db, bcrypt
-from flaskapp.forms import RegistrationForm, LoginForm, UpdateAccountForm, TaskForm, UpdateTaskForm
+from flaskapp.forms import RegistrationForm, LoginForm, UpdateAccountForm, TaskForm, UpdateTaskForm, PostForm
 from flaskapp.models import User, Task
 from flask_login import login_user, current_user, logout_user, login_required
 from PIL import Image
@@ -156,3 +156,12 @@ def support():
     image_file = url_for('static', filename='images/' +
                          current_user.image_file)
     return render_template('support.html', active_page='support', image_file=image_file)
+
+@app.route("/post/new", methods=['GET', 'POST'])
+@login_required
+def new_post():
+    form = PostForm()
+    if form.validate_on_submit():
+        flash('Your post has been created', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_post.html', title='New Post', form=form)

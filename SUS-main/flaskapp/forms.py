@@ -84,3 +84,8 @@ class UpdateTaskForm(FlaskForm):
     priority = SelectField('Priority', choices=dropdown,
                            render_kw={"placeholder": "Priority"})
     submit = SubmitField('Update')
+
+class PostForm(FlaskForm):
+    title = StringField('Title', validators=[DataRequired()])
+    content = TextAreaField('Content', validators=[DataRequired()])
+    submit = SubmitField('Post')
