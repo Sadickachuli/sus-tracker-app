@@ -16,6 +16,7 @@ class User(db.Model, UserMixin):
                            default='default.jpg')
     password = db.Column(db.String(60), nullable=False)
     tasks = db.relationship('Task', backref='creator', lazy=True)
+    posts = db.relationship('Post', backref='author', lazy=True)
 
     def __repr__(self) -> str:
         return f"User('{self.username}', '{self.email}', '{self.image_file}')"
@@ -33,3 +34,13 @@ class Task(db.Model):
 
     def __repr__(self) -> str:
         return f"Task('{self.title}', '{self.date_created}')"
+
+class Post(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False)
+    date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
+    content = db.Column(db.Text, nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+
+    def __repr__(self):
+        return f"Post('{self.title}', '{self.date_posted}')"

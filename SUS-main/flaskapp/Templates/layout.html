@@ -82,6 +82,11 @@
                   <i class="fa-solid fa-comments"></i>
                   <h3>Posts</h3>
                 </a>
+                <div class="select">
+                  <a class="{% if active_page == 'home' %}active{% endif %}" href="{{ url_for('home') }}">
+                    <i class="fa-solid fa-home"></i>
+                    <h3>Home</h3>
+                  </a>
               </div>
               <div class="select">
                 <a href="">

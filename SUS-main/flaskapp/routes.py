@@ -1,7 +1,7 @@
 from flask import redirect, url_for, render_template, flash, request, abort
 from flaskapp import app, db, bcrypt
 from flaskapp.forms import RegistrationForm, LoginForm, UpdateAccountForm, TaskForm, UpdateTaskForm, PostForm
-from flaskapp.models import User, Task
+from flaskapp.models import User, Task, Post
 from flask_login import login_user, current_user, logout_user, login_required
 from PIL import Image
 import secrets
@@ -165,3 +165,8 @@ def new_post():
         flash('Your post has been created', 'success')
         return redirect(url_for('home'))
     return render_template('create_post.html', title='New Post', form=form)
+
+@app.route("/home")
+def home():
+    posts = Post.query.all()
+    return render_template('home.html', posts=posts)
