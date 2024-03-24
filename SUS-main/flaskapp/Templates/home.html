@@ -2,16 +2,12 @@
 {% block title %}
 <title>Posts</title>
 {% endblock title %} 
-
-{% block styles %}
-{{ super() }} <!-- Include any stylesheets from the parent template -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-{% endblock styles %} 
-
 {% block mainheader %}
 {% for post in posts %}
         <article class="media content-section">
-          <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+          <div class="rounded-image">
+            <img class="article-img" src="{{ url_for('static', filename='images/' + post.author.image_file) }}">
+          </div>
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" href="#">{{ post.author.username }}</a>

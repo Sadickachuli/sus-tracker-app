@@ -14,12 +14,17 @@
     />
     <link
       rel="stylesheet"
+      href="{{ url_for('static', filename='styles/home.css') }}"
+    />
+    <link
+      rel="stylesheet"
       href="{{ url_for('static', filename='styles/tasks.css') }}"
     />
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles/update.css') }}"
     />
+    
     <link
       rel="stylesheet"
       href="{{ url_for('static', filename='styles/support.css') }}"
@@ -79,13 +84,13 @@
               </div>
               <div class="select">
                 <a class="{% if active_page == 'create_post' %}active{% endif %}" href="{{ url_for('new_post') }}">
-                  <i class="fa-solid fa-comments"></i>
-                  <h3>Posts</h3>
+                  <i class="fa-solid fa-comment-alt"></i>
+                  <h3>Post</h3>
                 </a>
                 <div class="select">
                   <a class="{% if active_page == 'home' %}active{% endif %}" href="{{ url_for('home') }}">
-                    <i class="fa-solid fa-home"></i>
-                    <h3>Home</h3>
+                    <i class="fa-solid fa-comments"></i>
+                    <h3>Convos</h3>
                   </a>
               </div>
               <div class="select">
