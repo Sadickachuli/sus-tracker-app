@@ -11,10 +11,6 @@
       <div class="dash-title">
         <h2>My Dashboard</h2>
       </div>
-      <div class="search-bar">
-        <h3>search</h3>
-        <i class="fa-solid fa-magnifying-glass"></i>
-      </div>
     </div>
 
     <div class="profile-pic">
@@ -47,19 +43,10 @@
           {% endif %}
         </div>
       </div>
-      <!-- team projects progress -->
-      <div class="dash-collaborations">
-        <h2>Projects</h2>
-        <div class="progress">
-          {% if projects %}
-          {% else %}
-          <h4 class="no">No Projects Created!</h4>
-          {% endif %}
-        </div>
-      </div>
+      
       <!-- deadlines -->
       <div class="dash-deadlines">
-        <h2>Deadlines</h2>
+        <h2><span style="color: white;">Deadlines</span></h2>
         <div class="progress-2">
           {% for task in my_tasks %}
           <h3>{{ task.id }}. {{ task.date_due }}</h3>
@@ -103,15 +90,6 @@
         {% else %}
         <h4 class="no">No Current task</h4>
         {% endif %}
-        </div>
-      </div>
-      <!-- current project -->
-      <div class="current-project">
-        <h2>Current Project</h2>
-        <div class="current-progress">
-          <div class="curr-proj">
-            <h2 class="no">No Projects Created!</h2>
-          </div>
         </div>
       </div>
     </div>

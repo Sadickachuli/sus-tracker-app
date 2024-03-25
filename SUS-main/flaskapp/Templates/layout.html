@@ -14,7 +14,7 @@
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='styles/home.css') }}"
+      href="{{ url_for('static', filename='styles/convo.css') }}"
     />
     <link
       rel="stylesheet"
@@ -88,7 +88,7 @@
                   <h3>Post</h3>
                 </a>
                 <div class="select">
-                  <a class="{% if active_page == 'home' %}active{% endif %}" href="{{ url_for('home') }}">
+                  <a class="{% if active_page == 'convo' %}active{% endif %}" href="{{ url_for('convo') }}">
                     <i class="fa-solid fa-comments"></i>
                     <h3>Convos</h3>
                   </a>

@@ -20,10 +20,10 @@ def dashboard():
 
 
 
-@app.route("/home")
-def home():
+@app.route("/convo")
+def convo():
     posts = Post.query.all()
-    return render_template('home.html', posts=posts)
+    return render_template('convo.html', posts=posts)
 
 
 
@@ -174,7 +174,7 @@ def new_post():
         db.session.add(post)
         db.session.commit()
         flash('Your post has been created', 'success')
-        return redirect(url_for('home'))
+        return redirect(url_for('convo'))
     return render_template('create_post.html', title='New Post', form=form)
 
 
@@ -213,4 +213,4 @@ def delete_post(post_id):
     db.session.delete(post)
     db.session.commit()
     flash('Your post has been deleted!', 'success')
-    return redirect(url_for('home'))
+    return redirect(url_for('convo'))
