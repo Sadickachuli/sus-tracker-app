@@ -3,7 +3,7 @@
     width: 95%;
     height: 70%;
     border-radius: 20px;
-    background: #815fd657;
+    background: black;
 
 }
 
@@ -22,7 +22,7 @@
 button {
     padding: 10px 20px;
     font-size: 16px;
-    background: #805fd6;
+    background: #2ECC71;
     color: #fff;
     border: none;
     cursor: pointer;

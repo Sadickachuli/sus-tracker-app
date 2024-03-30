@@ -4,7 +4,6 @@ body {
     margin-top: 5rem;
   }
   
- 
   .bg-steel {
     background-color: black;
   }
@@ -22,20 +21,20 @@ body {
   }
   
   .content-section {
-    background: #2ECC71;
+    background: black;
     padding: 10px 20px;
     border: 1px solid #dddddd;
     width: 25%;
     height: 100%;
     display: flex;
+    text-align: center;
     flex-direction: column;
-    align-items: center;
     justify-content: space-evenly;
     margin-right: 30px;
   }
   
   .article-title {
-    color: black;
+    color: white;
   }
   
   a.article-title:hover {
@@ -48,8 +47,8 @@ body {
   }
   
   .article-img {
-    height: 65px;
-    width: 65px;
+    height: 45px;
+    width: 45px;
     border-radius: 50%;
     margin-right: 16px;
   }
@@ -57,12 +56,20 @@ body {
   .article-metadata {
     padding-bottom: 1px;
     margin-bottom: 4px;
-    border-bottom: 1px solid #e3e3e3
+    border-bottom: 1px solid #e3e3e3;
+    color: white;
   }
   
   .article-metadata a:hover {
-    color: black;
+    color: #2ECC71;
     text-decoration: none;
+
+  }
+
+  .mr-2 {
+    color: #50ACFE;
+    margin-right: 155px;
+    
   }
   
   .article-svg {
@@ -80,8 +87,8 @@ body {
   } */
 
   .rounded-image {
-        height: 65px;
-        width: 65px;
+        height: 45px;
+        width: 45px;
         
         margin-right: 20px;
         margin-bottom: 16px;

@@ -4,26 +4,21 @@
 {% endblock title %} 
 {% block mainheader %}
 {% for post in posts %}
-        <article class="media content-section">
-          <div class="rounded-image">
-            <img class="article-img" src="{{ url_for('static', filename='images/' + post.author.image_file) }}">
-          </div>
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ post.author.username }}</a>
-              <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
-            </div>
-            <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
-            <p class="article-content">{{ post.content }}</p>
-          </div>
-        </article>
+
+  <section class="content-section">
+    <div class="rounded-image">
+      <img class="article-img" src="{{ url_for('static', filename='images/' + post.author.image_file) }}">
+    </div>
+    <div class="media-body">
+      <div class="article-metadata">
+        <a class="mr-2" href="#">{{ post.author.username }}</a>
+        <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+      </div>
+      <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+      <p class="article-content">{{ post.content }}</p>
+    </div>
+  </section>
+        
     {% endfor %}
 {% endblock mainheader %}
 
-{% block scripts %}
-{{ super() }} <!-- Include any scripts from the parent template -->
-<!-- Include Bootstrap's JavaScript if needed -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-{% endblock scripts %}

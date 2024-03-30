@@ -60,7 +60,7 @@ def update_task(task_id):
         task.date_due = form.date_due.data
         task.priority = form.priority.data
         db.session.commit()
-        flash('Your post has been updated!', 'success')
+        flash('Your Task has been updated!', 'success')
         return redirect(url_for('tasks'))
     elif request.method == 'GET':
         form.title.data = task.title

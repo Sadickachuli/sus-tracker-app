@@ -3,12 +3,8 @@
 <title>Posts</title>
 {% endblock title %} 
 
-{% block styles %}
-{{ super() }} <!-- Include any stylesheets from the parent template -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-{% endblock styles %} 
-
 {% block mainheader %}
+
 <div class="content-section">
     <form method="POST" action="">
         {{ form.hidden_tag() }}
