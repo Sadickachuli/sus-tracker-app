@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block title %}
+<title>Eco Tips</title>
+{% endblock title %}
+
+{% block mainheader %}
+<section class="content">
+  <!-- ECO TIPS HEADER -->
+  <div class="profile-header">
+    <div class="profile-title">
+      <h2>Sustainable Tips</h2>
+    </div>
+    <div class="profile-pic">
+      <!-- You can add any additional elements here if needed -->
+      <h4>Welcome, Guest</h4>
+    </div>
+  </div>
+  <!-- ECO TIPS MAIN -->
+  <div class="profile-main">
+    <!-- ECO TIPS CONTENT -->
+    <div class="user-left">
+      <ul>
+        <li>Tip 1</li>
+        <li>Tip 2</li>
+        <li>Tip 3</li>
+        <!-- You can dynamically populate this list with tips using JavaScript or Flask -->
+      </ul>
+    </div>
+    <!-- ECO TIPS RIGHT (empty for now) -->
+    <div class="user-right">
+      <!-- This section is intentionally left empty -->
+    </div>
+  </div>
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div id="flash-messages">
+        {% for message in messages %}
+          <div class="flash-message success">{{ message }}</div>
+        {% endfor %}
+      </div>
+      <script>
+        // JavaScript to fade out the flash messages after 3 seconds
+        document.addEventListener("DOMContentLoaded", function() {
+          var flashMessages = document.querySelectorAll('.flash-message');
+          flashMessages.forEach(function(message) {
+            setTimeout(function() {
+              message.classList.add('fade-out');
+            }, 3000);
+          });
+        });
+      </script>
+    {% endif %}
+  {% endwith %}
+</section>
+{% endblock mainheader %}

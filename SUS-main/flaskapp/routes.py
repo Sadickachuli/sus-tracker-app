@@ -214,3 +214,9 @@ def delete_post(post_id):
     db.session.commit()
     flash('Your post has been deleted!', 'success')
     return redirect(url_for('convo'))
+
+@app.route('/ecotips')
+def eco_tips():
+    # Here you'll add logic to fetch sustainable tips from your API
+    # For now, let's just render the template
+    return render_template('ecotips.html')

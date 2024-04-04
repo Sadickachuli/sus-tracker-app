@@ -98,7 +98,7 @@
                   </a>
               </div>
               <div class="select">
-                <a href="">
+                <a class="{% if active_page == 'ecotips' %}active{% endif %}" href="{{ url_for('eco_tips') }}">
                   <i class="fa-solid fa-lightbulb"></i>
                   <h3>Eco-tips</h3>
                 </a>
