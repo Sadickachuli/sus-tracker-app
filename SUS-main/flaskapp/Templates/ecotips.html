@@ -1,57 +1,69 @@
 {% extends "layout.html" %}
 
 {% block title %}
-<title>Eco Tips</title>
+<title>EcoTrends - Latest Climate News</title>
 {% endblock title %}
 
 {% block mainheader %}
-<section class="content">
-  <!-- ECO TIPS HEADER -->
-  <div class="profile-header">
-    <div class="profile-title">
-      <h2>Sustainable Tips</h2>
-    </div>
-    <div class="profile-pic">
-      <!-- You can add any additional elements here if needed -->
-      <h4>Welcome, Guest</h4>
-    </div>
+<div class="container">
+  <div class="info-box">
+    <h2>WELCOME TO <span class="emphasis">EcoTrends</span></h2>
+    <p>For Your Climate News</p>
   </div>
-  <!-- ECO TIPS MAIN -->
-  <div class="profile-main">
-    <!-- ECO TIPS CONTENT -->
-    <div class="user-left">
-      <ul>
-        <li>Tip 1</li>
-        <li>Tip 2</li>
-        <li>Tip 3</li>
-        <!-- You can dynamically populate this list with tips using JavaScript or Flask -->
-      </ul>
-    </div>
-    <!-- ECO TIPS RIGHT (empty for now) -->
-    <div class="user-right">
-      <!-- This section is intentionally left empty -->
-    </div>
-  </div>
-  <!-- Flash Messages -->
-  {% with messages = get_flashed_messages() %}
-    {% if messages %}
-      <div id="flash-messages">
-        {% for message in messages %}
-          <div class="flash-message success">{{ message }}</div>
-        {% endfor %}
-      </div>
-      <script>
-        // JavaScript to fade out the flash messages after 3 seconds
-        document.addEventListener("DOMContentLoaded", function() {
-          var flashMessages = document.querySelectorAll('.flash-message');
-          flashMessages.forEach(function(message) {
-            setTimeout(function() {
-              message.classList.add('fade-out');
-            }, 3000);
-          });
-        });
-      </script>
-    {% endif %}
-  {% endwith %}
-</section>
+  <button id="fetchNewsButton">LATEST CLIMATE NEWS</button>
+  <button id="refreshButton">REFRESH</button>
+  <div id="newsList"></div>
+</div>
+<script>
+  const refreshButton = document.getElementById('refreshButton');
+  const fetchNewsButton = document.getElementById('fetchNewsButton');
+  const newsListContainer = document.getElementById('newsList');
+
+  refreshButton.addEventListener('click', () => {
+      location.reload(); 
+  });
+
+  fetchNewsButton.addEventListener('click', async () => {
+      const url = 'https://climate-news-feed.p.rapidapi.com/page/1?limit=10'; // Change this URL to your Flask API endpoint
+      try {
+          const response = await fetch(url);
+          const result = await response.json(); 
+          displayNews(result.articles); 
+      } catch (error) {
+          console.error(error);
+      }
+  });
+
+  function displayNews(data) {
+      newsListContainer.innerHTML = ''; 
+      if (Array.isArray(data)) {
+          for (const news of data) {
+              const newsDiv = document.createElement('div');
+              newsDiv.className = 'news-item';
+              
+              const newsTitle = document.createElement('h2');
+              newsTitle.textContent = news.title;
+              
+              const newsSource = document.createElement('p');
+              newsSource.textContent = 'Source: ' + news.source;
+              
+              const newsDate = document.createElement('p');
+              newsDate.textContent = 'Publish Date: ' + news.published;
+              
+              const newsLink = document.createElement('a');
+              newsLink.href = news.url;
+              newsLink.textContent = 'Read More';
+              
+              newsDiv.appendChild(newsTitle);
+              newsDiv.appendChild(newsSource);
+              newsDiv.appendChild(newsDate);
+              newsDiv.appendChild(newsLink);
+              
+              newsListContainer.appendChild(newsDiv);
+          }
+      } else {
+          newsListContainer.textContent = 'No news available.';
+      }
+  }
+</script>
 {% endblock mainheader %}
