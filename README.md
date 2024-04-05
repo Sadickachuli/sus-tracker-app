@@ -25,7 +25,7 @@ To clone and run this application on your machine, follow these steps:
 2. **Navigate to the Project Directory**.
 
 
-3. **Install Dependencies**:
+3. **Install Dependencies**: pip install -r requirements.txt
 
 
 4. **Set Up the Database**:
