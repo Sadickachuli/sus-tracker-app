@@ -22,7 +22,7 @@ To clone and run this application on your machine, follow these steps:
 
 1. **Clone the Repository**: git clone https://github.com/Sadickachuli/sus-tracker-app.git
 
-2. **Navigate to the Project Directory**.
+2. **Navigate to the Project Directory**: cd /sus-Tracker/sus-tracker-app 
 
 
 3. **Install Dependencies**: pip install -r requirements.txt
