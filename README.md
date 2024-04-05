@@ -38,7 +38,7 @@ To clone and run this application on your machine, follow these steps:
   exit()
   ```
 
-5. **Run the Application**: in your terminal, run ```python main.py``` to start the server.
+5. **Run the Application**: in your terminal, run ***python main.py*** to start the server.
 
 
 6. **Access the Application**:
