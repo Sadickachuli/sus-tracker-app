@@ -5,6 +5,58 @@
 {% endblock title %}
 
 {% block mainheader %}
+<style>
+    .info-box {
+    color:#2ECC71;   
+}
+
+
+
+.emphasis {
+    font-weight: bold;
+    color: beige;
+}
+
+
+
+button:hover {
+    background-color: #1a73e8;
+}
+
+.news-item {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    margin: 15px;
+    padding: 15px;
+    text-align: left;
+    color: #333;
+}
+
+.news-item h2 {
+    margin-top: 0;
+    color: #e50914;
+    font-size: 24px;
+}
+
+.news-item p {
+    margin: 8px 0;
+}
+
+.news-item a {
+    display: inline-block;
+    background-color: #e50914;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.news-item a:hover {
+    background-color: #c40813;
+}
+</style>
 <div class="container">
   <div class="info-box">
     <h2>WELCOME TO <span class="emphasis">EcoTrends</span></h2>
@@ -24,15 +76,24 @@
   });
 
   fetchNewsButton.addEventListener('click', async () => {
-      const url = 'https://climate-news-feed.p.rapidapi.com/page/1?limit=10'; // Change this URL to your Flask API endpoint
-      try {
-          const response = await fetch(url);
-          const result = await response.json(); 
-          displayNews(result.articles); 
-      } catch (error) {
-          console.error(error);
-      }
-  });
+    const url = 'https://climate-news-feed.p.rapidapi.com/page/1?limit=10'; 
+    const options = {
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Host': 'climate-news-feed.p.rapidapi.com',
+            'X-RapidAPI-Key': 'ae6ba3d50bmsh85ba12c29d2cc3cp1cd314jsnd37ec2a679b7'
+        }
+    };
+    
+    try {
+        const response = await fetch(url, options);
+        const result = await response.json(); 
+        displayNews(result.articles); 
+    } catch (error) {
+        console.error(error);
+    }
+});
+
 
   function displayNews(data) {
       newsListContainer.innerHTML = ''; 
