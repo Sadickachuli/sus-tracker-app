@@ -3,11 +3,15 @@
 The Sus-Activity Tracker is a web application designed to improve and expand users' knowledge of sustainable living. It serves as a supplemental enhancement to current environmental measures rather than their replacement.
 
 ![sus-tracker-signup](https://github.com/user-attachments/assets/aa4e8b0e-8d27-4101-b843-299e52ef208d)
-![dashboard](https://github.com/user-attachments/assets/61014bd2-5bd5-44ad-ac7e-35fbe81762bd)
-![tasks](https://github.com/user-attachments/assets/699b4713-833f-42f6-bac3-0561f01542bc)
-![eco-tips](https://github.com/user-attachments/assets/eb7f281d-37e3-46be-af67-4e3627e4cd6c)
+![dashboard](https://github.com/user-attachments/assets/16682870-c701-4653-bb24-f3f438f7f12c)
+![eco-tips](https://github.com/user-attachments/assets/dd980b80-c677-474f-8d32-9ecaeacef23a)
+![tasks](https://github.com/user-attachments/assets/287b2196-e93e-40b3-b9b2-73bd4e95f4ce)
+![convos](https://github.com/user-attachments/assets/f96eba21-32d2-4856-8b23-395166cc206e)
+![profile](https://github.com/user-attachments/assets/44f40549-aedf-4b0a-9394-66b894b1b2c0)
+
 
 ## Features
+
 
 - Provides sustainable living tips, climate news, and suggestions.
 - Allows users to track their sustainable activities.
